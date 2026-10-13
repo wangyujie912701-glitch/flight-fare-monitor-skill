@@ -1,0 +1,8 @@
+interface:
+  display_name: "机票价格监测"
+  short_description: "按可编辑路线和日期配置检测含行李机票与促销"
+  default_prompt: "Use $flight-fare-monitor to update the route configuration and run a verifiable airfare check."
+policy:
+  allow_implicit_invocation: true
+
+

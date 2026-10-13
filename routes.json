@@ -1,0 +1,58 @@
+{
+  "configuration": {
+    "version": 1,
+    "updated_at": "2026-10-13",
+    "timezone": "UTC",
+    "currency_display": ["USD", "EUR"],
+    "passengers": { "adults": 1, "cabin": "economy" },
+    "baggage": { "minimum_checked_kg": 20, "use_airline_standard_if_higher": true },
+    "change_notes": ["Replace the sample routes with your own origins, destinations, and dates."]
+  },
+  "source_policy": {
+    "required": ["Google Flights", "Kiwi.com", "airline official website", "regional OTA"],
+    "retry": { "first_source_attempts": 2, "continue_to_fallbacks": true },
+    "stable_entry_urls": {
+      "Google Flights": "https://www.google.com/travel/flights",
+      "Kiwi.com": "https://www.kiwi.com/"
+    }
+  },
+  "payment_policy": {
+    "report_local_cards": true,
+    "report_international_cards": true,
+    "never_apply_unverified_cashback": true,
+    "platform_points_are_bank_cashback": false
+  },
+  "routes": [
+    {
+      "id": "sample-round-trip",
+      "active": true,
+      "journey_type": "round_trip",
+      "outbound": { "date": "2027-03-10", "from": ["AAA"], "to": ["BBB"] },
+      "inbound": { "date": "2027-03-17", "from": ["BBB"], "to": ["AAA"] },
+      "max_stops_per_direction": 1,
+      "connection_preference": "any_region",
+      "compare_split_tickets": true,
+      "alert": { "currency": "USD", "maximum_total": 500 }
+    },
+    {
+      "id": "sample-open-jaw",
+      "active": false,
+      "journey_type": "open_jaw",
+      "air_segments": [
+        { "date": "2027-04-01", "from": ["AAA"], "to": ["CCC"] },
+        { "date": "2027-04-09", "from": ["DDD"], "to": ["AAA"] }
+      ],
+      "ground_transfer": { "from": "CCC", "to": "DDD", "include_in_airfare": false },
+      "max_stops_per_direction": 1,
+      "connection_preference": "prefer_non_middle_east",
+      "alert": { "currency": "USD", "maximum_total_one_stop": 700, "maximum_total_direct_or_mixed": 850 }
+    }
+  ],
+  "output": {
+    "report_directory": "./reports",
+    "history_file": "fare-history.md",
+    "preserve_existing_content": true
+  }
+}
+
+
